@@ -1,0 +1,14 @@
+.formError p {
+  font-size: 12px;
+  text-align: left;
+  color: red;
+  margin: 0px 5px;
+}
+.formAction{ width: auto; max-width: 200px;}
+
+::ng-deep  .mat-form-field-label{
+  transition: none !important;
+  transform: translateY(-1.28125em) scale(.75) perspective(100px) translateZ(.001px) !important;
+}
+
+

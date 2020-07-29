@@ -1,0 +1,122 @@
+<div class="pageTopHeader m-2">
+  <a [routerLink]="['/sale']" class="btn btn-info btn-block"><i class="fas fa-chevron-left"></i></a>
+</div>
+
+<div class="container">
+  <!-- Default form contact -->
+  <form [formGroup]="newSaleForm" (ngSubmit)="submitData()" class="text-center border border-light" novalidate>
+
+      <p class="h4 mb-4">New Sale</p>
+
+      <div class="formField mb-4">
+        <div class="input-group">
+          <mat-form-field class="w100">
+            <mat-label>Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="date" (click)="picker.open()">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div *ngIf="f.date.touched && f.date.invalid" class="formError">
+          <p *ngIf="f.date.errors.required">Date Required </p>
+        </div>
+      </div>
+
+      <!-- Name -->
+      <div class="formField mb-4">
+        <input type="text" formControlName="subcont" class="form-control" placeholder="Sub Contractor" required>
+        <div *ngIf="f.subcont.touched && f.subcont.invalid" class="formError">
+          <p *ngIf="f.subcont.errors.required">Subcont Required</p>
+        </div>
+      </div>
+
+      <div class="formField mb-4">
+        <input type="text" formControlName="voucher" class="form-control" placeholder="voucher" required>
+        <div *ngIf="f.voucher.touched && f.voucher.invalid" class="formError">
+          <p *ngIf="f.voucher.errors.required">Voucher Required </p>
+          <p *ngIf="f.voucher.errors.pattern">Only Number value allowed </p>
+        </div>
+      </div>
+
+
+      <div class="formField mb-4">
+        <div class="input-group">
+          <div class="input-group-prepend"><span class="input-group-text">Litre</span></div>
+          <input type="text" formControlName="quantity" class="form-control" placeholder="Quantity" required>
+        </div>
+        <div *ngIf="f.quantity.touched && f.quantity.invalid" class="formError">
+          <p *ngIf="f.quantity.errors.required">Quantity Required</p>
+        </div>
+      </div>
+
+      <div class="formField mb-4">
+        <div class="input-group">
+          <div class="input-group-prepend"><span class="input-group-text">Rs</span></div>
+          <input type="text" formControlName="rate" class="form-control" placeholder="Rate" required />
+        </div>
+        <div *ngIf="f.rate.touched && f.rate.invalid" class="formError">
+          <p *ngIf="f.rate.errors.required">Rate Required </p>
+          <p *ngIf="f.rate.errors.pattern">Only Number value allowed </p>
+        </div>
+      </div>
+
+      <div class="formField mb-4">
+        <div class="input-group">
+          <div class="input-group-prepend"><span class="input-group-text">Rs</span></div>
+          <input #amount type="text" formControlName="amount" class="form-control" placeholder="Amount" required>
+        </div>
+        <div *ngIf="f.amount.touched && f.amount.invalid" class="formError">
+          <p *ngIf="f.amount.errors.required">Amount Required </p>
+          <p *ngIf="f.amount.errors.pattern">Only Number value allowed </p>
+        </div>
+      </div>
+
+      <div class="formField mb-4">
+        <div class="input-group">
+          <div class="input-group-prepend"><span class="input-group-text">Rs</span></div>
+          <input #advance type="text" formControlName="advance" class="form-control" placeholder="Advance" required>
+        </div>
+        <div *ngIf="f.advance.touched && f.advance.invalid" class="formError">
+          <p *ngIf="f.advance.errors.required">Advance Required </p>
+          <p *ngIf="f.advance.errors.pattern">Only Number value allowed </p>
+        </div>
+      </div>
+
+      <div class="formField mb-4">
+        <div class="input-group">
+          <div class="input-group-prepend"><span class="input-group-text">Rs</span></div>
+          <input type="text" class="form-control" placeholder="Net Amount" value="{{ ((amount.value-advance.value)>0)?(amount.value-advance.value):0}}">
+        </div>
+      </div>
+
+      <div class="formField mb-4">
+          <mat-form-field class="w100">
+            <mat-select formControlName="tank_id" placeholder="Select Stock">
+              <mat-option *ngFor="let tank of tanksList" [value]="tank.id">{{tank.title}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+      </div>
+
+      <!--
+      <div class="formField mb-4">
+        <input type="text" formControlName="expense" class="form-control" placeholder="Expense" required>
+        <div *ngIf="f.expense.touched && f.expense.invalid" class="formError">
+          <p *ngIf="f.expense.errors.required">Expense Required </p>
+          <p *ngIf="f.expense.errors.pattern">Only Number value allowed </p>
+        </div>
+      </div>
+      -->
+
+
+
+      <!-- Send button -->
+      <div class="formAction center">
+        <button class="btn btn-info btn-block" type="submit">Add</button>
+      </div>
+
+
+    </form>
+    <!-- Default form contact -->
+</div>
+
+

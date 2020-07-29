@@ -1,0 +1,123 @@
+<div class="wrapper">
+
+  <nav id="sidebar">
+    <div class="sidebar-header"><h3>Menu</h3></div>
+    <ul class="list-unstyled components">
+      <li class=""><a routerLink="">Home</a></li>
+
+      <li class="nav-item" routerLinkActive="active">
+	    	<a class="nav-link" routerLink="tanks">
+          <ion-icon name="add"></ion-icon>
+          <span>Stock</span>
+				</a>
+      </li>
+
+      <li class="nav-item" routerLinkActive="active">
+	    	<a class="nav-link" routerLink="sale">
+          <ion-icon name="add"></ion-icon>
+          <span>Sale</span>
+				</a>
+      </li>
+
+      <li class="nav-item">
+	    	<a class="nav-link" routerLink="purchase">
+          <ion-icon name="add"></ion-icon>
+          <span>Purchase</span>
+				</a>
+      </li>
+
+      <li class="nav-item">
+	    	<a class="nav-link" routerLink="payments">
+          <ion-icon name="add"></ion-icon>
+          <span>Payments</span>
+				</a>
+      </li>
+
+      <li class="nav-item">
+	    	<a class="nav-link" routerLink="expenses">
+          <ion-icon name="add"></ion-icon>
+          <span>Expenses</span>
+				</a>
+      </li>
+
+      <!-- <li class="nav-item">
+	    	<a class="nav-link" routerLink="investors">
+          <ion-icon name="add"></ion-icon>
+          <span>Investors</span>
+				</a>
+      </li> -->
+        <!--  -->
+        <!-- <li><a href="#">About</a></li>
+        <li>
+            <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li><a href="#">Page</a></li>
+                <li><a href="#">Page</a></li>
+                <li><a href="#">Page</a></li>
+            </ul>
+          </li>
+        <li><a href="#">Portfolio</a></li> -->
+        <li><a href="#">Contact</a></li>
+    </ul>
+</nav>
+
+  <div id="content">
+    <div class="text-center togglemenuBtn">
+    <button type="button" id="sidebarCollapse" class="btn btn-info m-2">
+        <svg class="svg-inline--fa fa-align-left fa-w-14" aria-hidden="true" data-prefix="fas" data-icon="align-left" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M288 44v40c0 8.837-7.163 16-16 16H16c-8.837 0-16-7.163-16-16V44c0-8.837 7.163-16 16-16h256c8.837 0 16 7.163 16 16zM0 172v40c0 8.837 7.163 16 16 16h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16zm16 312h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm256-200H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16h256c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16z"></path></svg><!-- <i class="fas fa-align-left"></i> -->
+        <span>Menu</span>
+    </button>
+    </div>
+
+      <div class="container mainContainer">
+        <router-outlet></router-outlet>
+     </div>
+
+  <div>
+</div>
+
+
+
+
+
+
+
+<!-- <div class="page-container">
+	<div class="side-bar">
+		<ul class="nav flex-column">
+	  	<li class="nav-item">
+	    	<a class="nav-link active" routerLink="home">
+					<ion-icon name="list"></ion-icon>
+				</a>
+	  	</li>
+
+      <li class="nav-item">
+	    	<a class="nav-link" routerLink="tanks">
+          <ion-icon name="add"></ion-icon>
+          <span>Tanks</span>
+				</a>
+      </li>
+
+      <li class="nav-item">
+	    	<a class="nav-link" routerLink="purchase">
+          <ion-icon name="add"></ion-icon>
+          <span>Purchase</span>
+				</a>
+      </li>
+
+
+      <li class="nav-item"  *ngIf="fbs.isUserLoggedIn()">
+	    	<a class="nav-link"  (click)="logoutClick()">
+          <ion-icon name="log-out"></ion-icon>
+				</a>
+      </li>
+
+		</ul>
+	</div>
+	<div class="content-container">
+ 		<router-outlet></router-outlet>
+	</div>
+</div> -->
+
+
+
+

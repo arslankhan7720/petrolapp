@@ -1,0 +1,150 @@
+<div class="pageTopHeader m-2">
+  <a (click)="AddNewExpense()" class="btn btn-info btn-block text-white"><i class="fas fa-edit"></i>New Expense</a>
+  <a [routerLink]="['/']" class="btn btn-info btn-block"><i class="fas fa-chevron-left"></i></a>
+</div>
+
+
+<div class="row-fluid">
+
+
+  <!-- ============================================================================================================ -->
+    <div class="mobile_filter mb-3" fxHide.gt-sm>
+      <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header><mat-panel-title>Filter</mat-panel-title></mat-expansion-panel-header>
+        <div class="mob_filters_header row" >
+
+          <div class="filterField col-12">
+            <mat-form-field>
+              <input #filter_from matInput [matDatepicker]="startDate" placeholder="From" (click)="startDate.open()">
+              <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+              <mat-datepicker #startDate></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div class="filterField col-12">
+            <mat-form-field>
+              <input #filter_to matInput [matDatepicker]="endDate" placeholder="To" (click)="endDate.open()">
+              <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+              <mat-datepicker #endDate></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div class="filterField col-12">
+            <mat-form-field>
+              <mat-select placeholder="Select Investor" #filter_investor>
+                <mat-option *ngFor="let investor of investorsList" [value]="investor.id">{{investor.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="filterField col-12">
+            <mat-form-field><input #filter_title matInput placeholder="Title"></mat-form-field>
+          </div>
+
+          <div class="filter_receipts col-12">
+            <div class="row">
+              <div class="col-6"><button mat-raised-button color="primary" (click)="searchData()">Search</button></div>
+              <div class="mob_filter_reset col-6 text-right" >
+                <button mat-raised-button color="primary" (click)="resetFilter()">Reset</button></div>
+            </div>
+          </div>
+
+        </div>
+
+
+      </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+
+
+
+  <!-- ============================================================================================================ -->
+  <div class="summary">
+    <div class="summaryBox" *ngIf="statistics">
+      <div class="summaryHeading center"><h4>Summary Report</h4></div>
+      <div class="summary">
+
+        <div class="summaryField">
+          <div class="summaryLabel">Total Expenses</div>
+          <div class="summaryData">{{statistics?.totalRecord}}</div>
+        </div>
+
+        <div class="summaryField">
+          <div class="summaryLabel">Sum of Expenses</div>
+          <div class="summaryData">Rs {{statistics?.sum | number }}</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- ============================================================================================================ -->
+
+
+  <!-- ============================================================================================================ -->
+  <!-- {{expensesList[3] | json }} -->
+
+  <table mat-table [dataSource]="expensesList" class="">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID.</th>
+      <td mat-cell *matCellDef="let element"><span class="mobile-label">ID:</span>{{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="investor">
+      <th mat-header-cell *matHeaderCellDef>Investor</th>
+      <td mat-cell *matCellDef="let element">
+        <span class="mobile-label">Investor:</span>
+          {{element.investor.name}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Title</th>
+      <td mat-cell *matCellDef="let element"><span class="mobile-label">Title:</span>{{element.title}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef>Amount</th>
+      <td mat-cell *matCellDef="let element"> <span class="mobile-label">Amount:</span>
+        {{element.amount}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Date</th>
+      <td mat-cell *matCellDef="let element"><span class="mobile-label">Date:</span> {{element.created_at | date: 'dd MMM yyyy' }} </td>
+    </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef class="btnDelete_cell">Action</th>
+      <td mat-cell *matCellDef="let element" class="btnDelete_cell">
+          <span class="f_20x delete_icon" (click)="removeItem(element.id)">
+            <i class="fas fa-trash-alt"></i>
+          </span>
+          <span class="f_20x delete_icon float-right" (click)="EditExpense(element)">
+            <span class="icon_label">Edit</span> <i class="fas fa-edit"></i>
+          </span>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns2;" class="mat-row investor_{{row.investor.id}}" ></tr>
+  </table>
+
+
+  <div *ngIf="preloader" class="preloader center">
+    <mat-progress-spinner
+      class="progress_spinner"
+      mode="indeterminate">
+    </mat-progress-spinner>
+  </div>
+
+
+  <div class="bottom_action w100">
+    <p class="left m0 showing float-left">Showing : {{expensesList?.length}} / {{statistics?.totalRecord}}</p>
+    <button *ngIf="loadMoreExist" class="float-right" mat-raised-button color="accent" (click)="loadMore()">Load More</button>
+  </div>
+
+  <!-- ============================================================================================================ -->

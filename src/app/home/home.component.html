@@ -1,0 +1,172 @@
+
+
+
+
+
+<div class="container-fluid">
+  <div class="row">
+
+<!-- ============================================================================================================ -->
+  <div class="CardBox col-md-6 p-0 mt-3">
+    <mat-card class="example-card">
+      <mat-card-header class="text-left">
+        <mat-card-title>Sale Report</mat-card-title>
+      </mat-card-header>
+      <div class="graph">
+        <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+      </div>
+      <mat-card-content>
+        <div class="cardContent" *ngIf="saleReport?.last30">
+          <p>Last 30 Days Report</p>
+          <div class="cardContData">
+              <strong>Total No of Sales </strong>
+              <span>{{saleReport.last30?.totalRecord}}</span>
+          </div>
+
+          <div class="cardContData">
+            <strong>Sum of Amount </strong>
+            <span>Rs {{saleReport.last30?.sumAmount | number }}</span>
+          </div>
+
+          <div class="cardContData">
+            <strong>Sum of Quantity </strong>
+            <span>Liter {{saleReport.last30?.sumQuantity | number }}</span>
+          </div>
+
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <a [routerLink]="['/sale']" routerLinkActive="router-link-active"  ><button mat-raised-button color="primary">Detail</button></a>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+<!-- ============================================================================================================ -->
+
+
+
+<!-- ============================================================================================================ -->
+<div class="CardBox col-md-6 p-0 mt-3">
+  <mat-card class="example-card">
+    <mat-card-header class="text-left">
+      <mat-card-title>Purchase Report</mat-card-title>
+    </mat-card-header>
+    <div class="graph">
+      <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+    </div>
+    <mat-card-content>
+      <div class="cardContent" *ngIf="purchaseReport?.last30">
+        <p>Last 30 Days Report</p>
+        <div class="cardContData">
+            <strong>Total No of Purchase </strong>
+            <span>{{purchaseReport.last30?.totalRecord}}</span>
+        </div>
+
+        <div class="cardContData">
+          <strong>Total Purchase Quantity </strong>
+          <span>{{purchaseReport.last30?.sumQuantity}}</span>
+        </div>
+
+        <div class="cardContData">
+          <strong>Total Purchase Amount </strong>
+          <span>{{purchaseReport.last30?.sumPrice | number }}</span>
+        </div>
+
+        <div class="cardContData">
+          <strong>Total Profit </strong>
+          <span>--</span>
+        </div>
+
+        <div class="cardContData">
+          <strong>Total Expense </strong>
+          <span>{{purchaseReport.last30?.sumExpense | number}}</span>
+        </div>
+
+
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <a [routerLink]="['/purchase']" routerLinkActive="router-link-active"  ><button mat-raised-button color="primary">Detail</button></a>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<!-- ============================================================================================================ -->
+
+
+
+<!-- ============================================================================================================ -->
+<div class="CardBox col-md-6 p-0 mt-3">
+  <mat-card class="example-card">
+    <mat-card-header class="text-left">
+      <mat-card-title>Expense Report</mat-card-title>
+    </mat-card-header>
+    <div class="graph">
+    </div>
+    <mat-card-content>
+      <div class="cardContent" *ngIf="expenseReport?.last30">
+        <p>Last 30 Days Report</p>
+        <div class="cardContData">
+            <strong>Total No of Purchase </strong>
+            <span>{{expenseReport.last30?.totalRecord}}</span>
+        </div>
+
+        <div class="cardContData">
+          <strong>Total Expense</strong>
+          <span>{{expenseReport.last30?.sum | number }}</span>
+        </div>
+
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <a [routerLink]="['/expenses']" routerLinkActive="router-link-active"  ><button mat-raised-button color="primary">Detail</button></a>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<!-- ============================================================================================================ -->
+
+
+<!-- ============================================================================================================ -->
+<div class="CardBox col-md-6 p-0 mt-3">
+  <mat-card class="example-card">
+    <mat-card-header class="text-left">
+      <mat-card-title>Payment Report</mat-card-title>
+    </mat-card-header>
+    <div class="graph">
+    </div>
+    <mat-card-content>
+      <div class="cardContent" *ngIf="paymentReport?.last30">
+        <p>Last 30 Days Report</p>
+
+        <div class="cardContData">
+            <strong>Total No of Credit </strong>
+            <span>{{paymentReport.last30?.creditTotalRecord}}</span>
+        </div>
+
+        <div class="cardContData">
+          <strong>Total Credit</strong>
+          <span>{{paymentReport.last30?.sumCredit | number}}</span>
+        </div>
+
+        <div class="cardContData">
+          <strong>Total No of Withdrawl</strong>
+          <span>{{paymentReport.last30?.withdrawlTotalRecord}}</span>
+        </div>
+
+        <div class="cardContData">
+          <strong>Total Withdrawl</strong>
+          <span>{{paymentReport.last30?.sumWithdrawl | number}}</span>
+        </div>
+
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <a [routerLink]="['/payments']" routerLinkActive="router-link-active"  ><button mat-raised-button color="primary">Detail</button></a>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<!-- ============================================================================================================ -->
+
+
+
+
+  </div>
+</div>

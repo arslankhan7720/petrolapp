@@ -1,0 +1,44 @@
+
+<div class="newExpense">
+  <form [formGroup]="newForm" (ngSubmit)="submitData()" class="text-center border border-light p-0" novalidate>
+      <p class="h4 mb-4">{{ (expenseData)?('Edit Expense'):('Add New Expense') }}</p>
+
+      <input type="hidden" formControlName="id" />
+
+      <div class="formField mb-4">
+        <input type="text" formControlName="title" class="form-control" placeholder="Title" required>
+        <div *ngIf="f.title.touched && f.title.invalid" class="formError">
+          <p *ngIf="f.title.errors.required">Title Required </p>
+        </div>
+      </div>
+
+
+      <div class="formField mb-4">
+        <div class="input-group">
+          <div class="input-group-prepend"><span class="input-group-text">Rs</span></div>
+          <input type="text" formControlName="amount" class="form-control" placeholder="amount" required>
+        </div>
+        <div *ngIf="f.amount.touched && f.amount.invalid" class="formError">
+          <p *ngIf="f.amount.errors.pattern">Only Number value allowed </p>
+        </div>
+      </div>
+
+
+      <div class="formField mb-4">
+        <mat-form-field class="w100">
+          <mat-select formControlName="investor_id" placeholder="Select Investor">
+            <mat-option *ngFor="let investor of investorsList" [value]="investor.id">{{investor.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+
+      <!-- Send button -->
+      <div class="formAction">
+        <button class="btn btn-info btn-block" type="submit">{{(expenseData)?'Upate':'Add'}}</button>
+      </div>
+    </form>
+    <!-- Default form contact -->
+</div>
+
+

@@ -1,0 +1,32 @@
+
+<div class="newInvestor">
+  <form [formGroup]="newForm" (ngSubmit)="submitData()" class="text-center border border-light p-0" novalidate>
+      <p class="h4 mb-4">Add New Investor</p>
+
+      <div class="formField mb-4">
+        <input type="text" formControlName="name" class="form-control" placeholder="name" required>
+        <div *ngIf="f.name.touched && f.name.invalid" class="formError">
+          <p *ngIf="f.name.errors.required">Name Required</p>
+        </div>
+      </div>
+
+      <div class="formField mb-4">
+        <div class="input-group">
+          <div class="input-group-prepend"><span class="input-group-text">Rs</span></div>
+          <input type="text" formControlName="amount" class="form-control" placeholder="amount" required>
+        </div>
+        <div *ngIf="f.amount.touched && f.amount.invalid" class="formError">
+          <p *ngIf="f.amount.errors.pattern">Only Number value allowed </p>
+        </div>
+      </div>
+
+
+      <!-- Send button -->
+      <div class="formAction">
+        <button class="btn btn-info btn-block" type="submit">Add</button>
+      </div>
+    </form>
+    <!-- Default form contact -->
+</div>
+
+

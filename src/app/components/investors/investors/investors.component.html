@@ -1,0 +1,10 @@
+<!-- <button class="btn btn-info btn-block" >Add New Investor</button>
+<button class="btn btn-info btn-block" (click)="AddNewPayment()">New Payment</button> -->
+<div class="pageTopHeader m-2">
+  <a (click)="AddNewPayment()" class="btn btn-info btn-block text-white"><i class="fas fa-edit"></i>New Payment</a>
+  <a (click)="AddNewInvestor()" class="btn btn-info btn-block text-white"><i class="fas fa-edit"></i>New Investor</a>
+  <a [routerLink]="['/']" class="btn btn-info btn-block"><i class="fas fa-chevron-left"></i></a>
+</div>
+
+
+<app-payments></app-payments>

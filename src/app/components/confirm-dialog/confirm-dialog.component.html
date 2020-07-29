@@ -1,0 +1,33 @@
+  <!-- <h1 mat-dialog-title>{{title}}</h1>
+  <div mat-dialog-content>
+    <p>{{message}}</p>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onDismiss()">No</button>
+    <button mat-raised-button color="primary" (click)="onConfirm()">Yes</button>
+  </div> -->
+
+
+
+<div class="confirmDialog">
+
+<div mat-dialog-content>
+  <div *ngIf="!initial_conformed" class="text-center">
+    <div>
+      <span class="lg_icon warning_icon">
+        <i class="fas fa-exclamation"></i>
+      </span>
+    </div>
+    <h2 class="custom text-center m0">Attention!</h2>
+    <p>{{message}}</p>
+  </div>
+</div>
+
+<div class="center">
+  <div mat-dialog-actions align="center">
+    <button mat-raised-button color="default" (click)="onDismiss()">No</button>
+    <button mat-raised-button color="primary" (click)="onConfirm()">Yes</button>
+  </div>
+</div>
+</div>

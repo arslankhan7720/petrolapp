@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-12 min-vh-100 d-flex flex-column justify-content-center">
+          <div class="row">
+              <div class="col-lg-8 col-md-8 mx-auto">
+
+                  <!-- <div class="login_logo text-center">
+                    <img src="./assets/images/logo-white-trans.jpg" />
+                  </div> -->
+                  <!-- form card login -->
+                  <div class="card rounded shadow shadow-sm">
+                      <div class="card-header text-center">
+                          <h3 class="mb-0">Petrol Admin Portal</h3>
+                      </div>
+                      <div class="card-body">
+                          <form class="form" [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+
+                          <div class="form-group">
+                            <label class="sr-only" for="username">Username</label>
+                            <div class="input-group mb-2 mr-sm-2">
+                              <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="material-icons icon-image-preview">person</i></div>
+                              </div>
+                              <input type="text" class="form-control form-control-lg rounded-0" formControlName="username" placeholder="Login ID">
+
+                              <div *ngIf="submitted && f.username.errors" class="invalid-feedback" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+                                  <div *ngIf="f.username.errors.required">Login ID is required</div>
+                              </div>
+
+                            </div>
+                          </div>
+
+
+                          <div class="form-group">
+                              <label class="sr-only" for="password">Password</label>
+                               <div class="input-group mb-2 mr-sm-2">
+                              <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="material-icons icon-image-preview">lock</i></div>
+                              </div>
+                              <input type="password" class="form-control form-control-lg rounded-0" formControlName="password" placeholder="Password">
+
+                              <div *ngIf="submitted && f.password.errors" class="invalid-feedback"  [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+                              >
+                                  <div *ngIf="f.password.errors.required">Password is required</div>
+                              </div>
+
+                            </div>
+                          </div>
+
+                          <div class="error_box">
+                              <div *ngIf="error" class="alert alert-danger alert-dismissible fade show">
+                                <strong>Error!</strong>{{error}}
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                              </div>
+                          </div>
+
+                          <button type="submit" [disabled]="loading" class="btn btn-primary btn-lg float-right">
+                              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                              <svg *ngIf="!loading" style="width:24px;height:24px" viewBox="0 0 24 24">
+                                  <path fill="#FFFFFF" d="M10,17V14H3V10H10V7L15,12L10,17M10,2H19A2,2 0 0,1 21,4V20A2,2 0 0,1 19,22H10A2,2 0 0,1 8,20V18H10V20H19V4H10V6H8V4A2,2 0 0,1 10,2Z" />
+                              </svg>
+                              Log in</button>
+
+                        </form>
+                      </div>
+                      <!--/card-block-->
+                  </div>
+                  <!-- /form card login -->
+
+              </div>
+
+
+          </div>
+          <!--/row-->
+
+      </div>
+      <!--/col-->
+  </div>
+  <!--/row-->
+</div>
+<!--/container-->
+
+
